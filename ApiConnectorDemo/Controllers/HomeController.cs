@@ -1,7 +1,9 @@
 using ApiConnectorDemo.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace ApiConnectorDemo.Controllers
 {
@@ -22,7 +24,7 @@ namespace ApiConnectorDemo.Controllers
         }
 
 
-        [Authorize(Policy="Admin")]
+        [Authorize(Roles="Admin")]
         public IActionResult Privacy()
         {
             return View();
@@ -36,3 +38,5 @@ namespace ApiConnectorDemo.Controllers
         }
     }
 }
+
+

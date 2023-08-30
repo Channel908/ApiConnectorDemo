@@ -55,62 +55,7 @@
 			"value": "Admin"
 		}
 	],
-	"oauth2AllowUrlPathMatching": false,
-	"createdDateTime": "2023-08-28T16:08:59Z",
-	"description": null,
-	"certification": null,
-	"disabledByMicrosoftStatus": null,
-	"groupMembershipClaims": null,
-	"identifierUris": [],
-	"informationalUrls": {
-		"termsOfService": null,
-		"support": null,
-		"privacy": null,
-		"marketing": null
-	},
-	"keyCredentials": [],
-	"knownClientApplications": [],
-	"logoUrl": null,
-	"logoutUrl": null,
-	"name": "ApiConnectorDemo",
-	"notes": null,
-	"oauth2AllowIdTokenImplicitFlow": true,
-	"oauth2AllowImplicitFlow": true,
-	"oauth2Permissions": [],
-	"oauth2RequirePostResponse": false,
-	"optionalClaims": null,
-	"orgRestrictions": [],
-	"parentalControlSettings": {
-		"countriesBlockedForMinors": [],
-		"legalAgeGroupRule": "Allow"
-	},
-	"passwordCredentials": [
-		{
-			"customKeyIdentifier": null,
-			"endDate": "2024-02-25T18:39:29.76Z",
-			"keyId": "bbb27b8e-3bc8-4b99-99fe-940d4d5906e8",
-			"startDate": "2023-08-29T17:39:29.76Z",
-			"value": null,
-			"createdOn": "2023-08-29T17:39:37.4476949Z",
-			"hint": "87G",
-			"displayName": "secret"
-		}
-	],
-## Create a Service Account
 
-Creating a Service Account with the name `admin-user` in namespace `kubernetes-dashboard` first.
-
-dockerui-user-account.yaml
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: admin-user
-  namespace: kubernetes-dashboard
-```
-
-```
-kubectl apply -f dockerui-user-account.yaml
 ```
 
 

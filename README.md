@@ -1,6 +1,7 @@
 # Application Registration Manifest AppRoles
 
-## Install the Docker Kubernetes UI
+The Manifest is the json representaion of the Application registration.
+
 
 ```
 	"appRoles": [

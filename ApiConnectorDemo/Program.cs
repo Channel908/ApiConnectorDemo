@@ -1,17 +1,16 @@
+using ApiConnectorDemo.Service;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
-using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration);
 
-builder.Services.AddScoped<IClaimsTransformation, RoleClaimsTransformation>();
+builder.Services.AddScoped<IClaimsTransformation, RoleClaimsTransformationService>();
 
 builder.Services.AddAuthorization(options =>
 {
@@ -54,27 +53,5 @@ app.MapRazorPages();
 app.Run();
 
 
-public class RoleClaimsTransformation : IClaimsTransformation
-{
-    public Task<ClaimsPrincipal> TransformAsync(ClaimsPrincipal principal)
-    {
-        ClaimsIdentity claimsIdentity = new ClaimsIdentity();
 
-        var identity = principal.Identities.FirstOrDefault();
-
-        if (identity is null)
-            return Task.FromResult(principal);
-
-        Claim? extensionRoles = principal.Claims?.FirstOrDefault(x => x.Type == "extension_Roles");
-
-        if (extensionRoles is null)
-            return Task.FromResult(principal);
-
-        var values = extensionRoles.Value.Split(',');
-
-        identity.AddClaims(values.Select(s => new Claim(ClaimTypes.Role, s)));
-
-        return Task.FromResult(principal);
-    }
-}
 

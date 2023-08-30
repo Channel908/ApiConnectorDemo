@@ -1,7 +1,7 @@
 # Application Registration Manifest AppRoles
 
-The Manifest is the json representaion of the Application registration.
-
+The Manifest is the json representaion of the Application Registration.
+If a setting isn't available in the UI you can edit it in the manifest.
 
 ```
 	"appRoles": [
